@@ -32,10 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				success(res) {
 					if (!res.status) Qmsg.warning('服务器接口异常！');
 					{
-						$('.joe_census__server-item .count .core').html(`${res.cpu[1]} 核`);
+						$('.joe_census__server-item .count .core').html(`${res.cpu[1]} nhân`);
 						$('.joe_census__server-item .count .ram').html(`${megaknotsToSize(res.memory.memTotal)}`);
-						$('.joe_census__server-item .count .up').html(`总发送：${bytesToSize(res.upTotal)}`);
-						$('.joe_census__server-item .count .down').html(`总接收：${bytesToSize(res.downTotal)}`);
+						$('.joe_census__server-item .count .up').html(`Tổng số đã gửi: ${bytesToSize(res.upTotal)}`);
+						$('.joe_census__server-item .count .down').html(`Tổng số đã nhận: ${bytesToSize(res.downTotal)}`);
 						const stamp = new Date();
 						const hours = String(stamp.getHours()).padStart(2, 0);
 						const minutes = String(stamp.getMinutes()).padStart(2, 0);
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 											}
 										}
 									},
-									stack: '总量',
+									stack: 'tổng cộng',
 									data: upSeries
 								},
 								{
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 											}
 										}
 									},
-									stack: '总量',
+									stack: 'tổng cộng',
 									data: downSeries
 								}
 							]
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						const systemLoad = Math.round((res.load.one / res.load.max) * 100) > 100 ? 100 : Math.round((res.load.one / res.load.max) * 100);
 						workChart.setOption({
 							title: {
-								subtext: '单位 百分比'
+								subtext: 'Đơn vị Phần trăm'
 							},
 							tooltip: {
 								trigger: 'axis',
@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				success(res) {
 					if (!res.length) {
 						$('.joe_census__filing .item.load').remove();
-						return Qmsg.warning('没有更多内容了');
+						return Qmsg.warning('Không còn nội dung nào khác!');
 					}
 					let htmlStr = '';
 					res.forEach(item => {
@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						`;
 					});
 					$('#filing').append(htmlStr);
-					$('.joe_census__filing .button').html('加载更多');
+					$('.joe_census__filing .button').html('Tải thêm');
 				}
 			});
 		}
@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 		$('.joe_census__filing .button').on('click', function () {
 			initFiling();
-			$(this).html('loading...');
+			$(this).html('Đang tải...');
 		});
 	}
 });
