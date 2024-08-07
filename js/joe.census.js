@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					routeType: 'server_status'
 				},
 				success(res) {
-					if (!res.status) Qmsg.warning('服务器接口异常！');
+					if (!res.status) Qmsg.warning('Giao diện máy chủ không bình thường!');
 					{
 						$('.joe_census__server-item .count .core').html(`${res.cpu[1]} nhân`);
 						$('.joe_census__server-item .count .ram').html(`${megaknotsToSize(res.memory.memTotal)}`);
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						if (downSeries.length > 5) downSeries.shift();
 						flowChart.setOption({
 							title: {
-								subtext: '单位 KB/s'
+								subtext: 'Đơn vị KB/s'
 							},
 							grid: {
 								left: '3%',
@@ -95,12 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
 											}
 										}
 									},
-									stack: 'tổng cộng',
+									stack: 'Tổng cộng',
 									data: upSeries
 								},
 								{
 									type: 'line',
-									name: '下行',
+									name: 'Đi xuống',
 									smooth: true,
 									showSymbol: false,
 									itemStyle: {
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 											}
 										}
 									},
-									stack: 'tổng cộng',
+									stack: 'Tổng cộng',
 									data: downSeries
 								}
 							]
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						const systemLoad = Math.round((res.load.one / res.load.max) * 100) > 100 ? 100 : Math.round((res.load.one / res.load.max) * 100);
 						workChart.setOption({
 							title: {
-								subtext: 'Đơn vị Phần trăm'
+								subtext: 'Đơn vị phần trăm'
 							},
 							tooltip: {
 								trigger: 'axis',
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 								axisTick: {
 									show: false
 								},
-								data: ['CPU占用', '内存占用', '系统缓冲', '内存缓冲', '系统负载']
+								data: ['Mức sử dụng CPU', 'Sử dụng bộ nhớ', 'Bộ đệm hệ thống', 'Bộ đệm bộ nhớ', 'Tải hệ thống']
 							},
 							yAxis: {
 								type: 'value',
@@ -162,35 +162,35 @@ document.addEventListener('DOMContentLoaded', () => {
 							series: {
 								data: [
 									{
-										name: 'CPU占用',
+										name: 'Mức sử dụng CPU',
 										value: cpuUse,
 										itemStyle: {
 											color: '#b3c25a'
 										}
 									},
 									{
-										name: '内存占用',
+										name: 'Sử dụng bộ nhớ',
 										value: memoryRealUse,
 										itemStyle: {
 											color: '#67b580'
 										}
 									},
 									{
-										name: '系统缓冲',
+										name: 'Bộ đệm hệ thống',
 										value: memoryBufferUse,
 										itemStyle: {
 											color: '#86ba71'
 										}
 									},
 									{
-										name: '内存缓冲',
+										name: 'Bộ đệm bộ nhớ',
 										value: memoryCacheUse,
 										itemStyle: {
 											color: '#feb041'
 										}
 									},
 									{
-										name: '系统负载',
+										name: 'Tải hệ thống',
 										value: systemLoad,
 										itemStyle: {
 											color: '#fd7e55'
@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			success(res) {
 				latelyChart.setOption({
 					title: {
-						subtext: '单位 数量'
+						subtext: 'Số lượng đơn vị'
 					},
 					tooltip: {
 						trigger: 'axis',
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						type: 'value'
 					},
 					series: {
-						name: '数量',
+						name: 'Số lượng',
 						itemStyle: {
 							normal: {
 								color: '#91cc75',
